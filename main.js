@@ -25,12 +25,13 @@
 */
 
 //============= Globals ================================
-let searchTerm = "jack johnson";
+let searchTerm = "";
+let url = "";
 let explicit = "no";
-const url = `https:\/\/itunes.apple.com/search?term=${searchTerm}&media=music&${explicit}&limit=20`;
 const form = document.querySelector(".search-form");
-
-form.addEventListener("submit", beginSearch)
+const urlBase = `https://itunes.apple.com/search?term=`;
+const urlEnd = `&media=music&limit=20`
+form.addEventListener("submit", appRun);
 
 function getSongs (url) {
   fetch(url).then(function (data) {
@@ -38,4 +39,18 @@ function getSongs (url) {
   }).then(function(data) {
     console.log(data);
   })
+}
+
+function appRun (event) {
+  event.preventDefault();
+  searchTerm = event.target[0].value;
+  returnURL(searchTerm);
+  console.log(url);
+  getSongs(url);
+  event.target[0].value = ""
+}
+
+function returnURL (str) {
+  url = urlBase + str + urlEnd;
+  return url;
 }
