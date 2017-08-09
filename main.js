@@ -33,12 +33,36 @@ const urlBase = `https://itunes.apple.com/search?term=`;
 const urlEnd = `&media=music&limit=20`
 form.addEventListener("submit", appRun);
 
+function returnURL (str) {
+  url = urlBase + str + urlEnd;
+  return url;
+}
+
 function getSongs (url) {
   fetch(url).then(function (data) {
     return data.json();
   }).then(function(data) {
     console.log(data);
-  })
+    return data;
+  }).then(buildSongs);
+}
+
+function buildSong(song) {
+  const results = document.querySelector(".results");
+  const div = document.createElement("div");
+  div.className = "song";
+  div.innerHTML = `<img src= ${song.artworkUrl100}>
+  <h3>${song.trackName}</h3>
+  <h4>${song.artistName}</h4>`;
+  results.appendChild(div);
+}
+
+function buildSongs(library) {
+  let songs = library.results;
+  console.log(songs);
+  for (let i = 0; i < songs.length; i++) {
+    buildSong(songs[i]);
+   }
 }
 
 function appRun (event) {
@@ -48,9 +72,4 @@ function appRun (event) {
   console.log(url);
   getSongs(url);
   event.target[0].value = ""
-}
-
-function returnURL (str) {
-  url = urlBase + str + urlEnd;
-  return url;
 }
