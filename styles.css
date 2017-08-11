@@ -2,15 +2,6 @@
 font-family: 'Bowlby One SC', cursive;
 font-family: 'Syncopate', sans-serif;
 font-family: 'Ubuntu', sans-serif;
-
-red
-color: #993400;
-
-yellow
-color: #f2c400;
-
-green
-color: #B7BF00;
 */
 
 * {
@@ -21,8 +12,8 @@ color: #B7BF00;
 
 body {
 	font-family: 'Ubuntu', sans-serif;
-	background-color: black;
-	padding-top: 50px;
+	background: linear-gradient(to top, #131313, #000000);
+	padding: 50px 0px;
 }
 
 .container {
@@ -31,15 +22,9 @@ body {
 	align-items: center;
 	width: 85%;
 	margin: 0 auto;
-	background: #360033; /* fallback for old browsers */
-	background: -webkit-linear-gradient(
-		#0b8793,
-		#0acf00,
-		#0bc476
-	); /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(
 		#0b8793 20%,
-		#0acf00 70%,
+		#42db3b 50%,
 		#0bc476
 	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -100,9 +85,15 @@ input:focus {
 }
 
 button {
+	top: -4px;
 	padding: 7px 7px 5px 7px;
 	margin: 0px;
 	font-size: 15px;
+	border: none;
+}
+
+button:hover {
+	background-color: white;
 }
 
 .results {
@@ -117,12 +108,16 @@ button {
 	flex-direction: column;
 	align-items: center;
 	flex-basis: 20%;
-	margin: 5px;
-	padding: 10px;
+	padding: 20px 10px;
 	transition: box-shadow 1s;
 	text-align: center;
-	border-radius: 20px;
 	color: white;
+	background-color: rgba(203, 112, 218, 0.3);
+	transition: background-color 0.2s;
+}
+
+.song:hover {
+	background-color: rgba(203, 112, 218, 0.7);
 }
 
 .song .playbtn {
@@ -135,4 +130,10 @@ button {
 
 .playbtn:hover {
 	opacity: 1;
+	background-color: rgba(38, 38, 38, 0.42);
+}
+
+footer {
+	margin-top: 50px;
+	color: white;
 }
