@@ -31,7 +31,18 @@ body {
 	align-items: center;
 	width: 85%;
 	margin: 0 auto;
-	background-image: linear-gradient(#e7a302, #b98200);
+	background: #360033; /* fallback for old browsers */
+	background: -webkit-linear-gradient(
+		#0b8793,
+		#0acf00,
+		#0bc476
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		#0b8793 20%,
+		#0acf00 70%,
+		#0bc476
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 	padding-bottom: 100px;
 }
 
@@ -58,6 +69,10 @@ header {
 	margin: 0;
 }
 
+header h2 {
+	color: white;
+}
+
 .player {
 	display: flex;
 	padding-bottom: 30px;
@@ -70,6 +85,7 @@ header {
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	margin-bottom: 30px;
 }
 
 input {
@@ -77,6 +93,10 @@ input {
 	margin: 30px 0px 0px 0px;
 	height: 30px;
 	width: 300px;
+}
+
+input:focus {
+	outline-color: #27ff1c;
 }
 
 button {
@@ -89,8 +109,30 @@ button {
 	display: flex;
 	flex-basis: 100%;
 	flex-wrap: wrap;
+	justify-content: space-around;
 }
 
 .song {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	flex-basis: 20%;
+	margin: 5px;
+	padding: 10px;
+	transition: box-shadow 1s;
+	text-align: center;
+	border-radius: 20px;
+	color: white;
+}
+
+.song .playbtn {
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.playbtn:hover {
+	opacity: 1;
 }
